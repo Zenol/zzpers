@@ -1,6 +1,5 @@
 #!/usr/bin/python2
 
-import matplotlib.pyplot as plt
 import sys
 import fileinput
 import math
