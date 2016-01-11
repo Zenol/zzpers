@@ -1,2 +1,2 @@
 #!/bin/sh
-clang++ -O3 -I ~/Dionysus/include/ ~/Dionysus/examples/rips/rips-zigzag.cpp -lboost_program_options -o rips-zz
+clang++ -O3 -I ~/Dionysus/include/ rips-zigzag.cpp -lboost_program_options -o rips-zz
