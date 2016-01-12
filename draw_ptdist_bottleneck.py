@@ -68,5 +68,8 @@ for i in range(0, len(diag_l)):
   colors.append(255.0 * i / float(len(diag_l)))
 print colors
 print len(pts_l), len(diag_l)
-plt.scatter(pts_l, diag_l, c=colors)
+
+ax = plt.subplot(111)
+ax.plot(pts_l, diag_l, color='0.8', zorder=1)
+ax.scatter(pts_l, diag_l, c=colors, zorder=2)
 plt.show()
