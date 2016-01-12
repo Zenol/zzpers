@@ -38,7 +38,7 @@ subprocess.call(['./launch_calc.sh',
                  xyz,
                  'output-' + name + '/',
                  '0',
-                 str(len(xyz) - 1)])
+                 str(len(pt) - 1)])
 print './bottleneckify.py output-'+name+' output-'+name+'/0.pers > '+name+'-bottleneck.dist'
 subprocess.call(['sh', '-c',  './bottleneckify.py output-'+name+' output-'+name+'/0.pers > '+name+'-bottleneck.dist'])
 
