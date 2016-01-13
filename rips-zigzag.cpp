@@ -21,6 +21,18 @@
 #include <boost/program_options.hpp>
 #include <boost/progress.hpp>
 
+//#define DEBUG__
+
+#ifdef DEBUG__
+#undef rDebug
+#include <cstdio>
+#define rDebug(args...) (printf(args))
+template<class T>
+std::string tostring(const T& t) { std::ostringstream out; out << t; return out.str(); }
+template<class T>
+std::string intostring(const T& t) { std::ostringstream out; t.operator<<(out); return out.str(); }
+#endif // DEBUG__
+
 #ifdef COUNTERS
 static Counter*  cComplexSize =                     GetCounter("rips/size");
 static Counter*  cOperations =                      GetCounter("rips/operations");
@@ -93,6 +105,9 @@ int main(int argc, char* argv[])
     std::string     infilename, outfilename;
     process_command_line_options(argc, argv, skeleton_dimension, first_vertex, multiplier, infilename, outfilename);
 
+    // !
+    // ! ASSERT THAT THERE IS NEVER TWO TIME THE SAME POINT !!!
+    // !
     // Read in points
     PointContainer      points;
     read_points(infilename, points);
@@ -302,11 +317,12 @@ void        report_death(std::ostream& out, Death d, DistanceType epsilon, Dimen
 
 void        make_boundary(const Smplx& s, Complex& c, const Zigzag& zz, Boundary& b)
 {
-    rDebug("  Boundary of <%s>", tostring(s).c_str());
+    rDebug("  Boundary of <%s>\n\n", tostring(s).c_str());
     for (Smplx::BoundaryIterator cur = s.boundary_begin(); cur != s.boundary_end(); ++cur)
     {
-        b.append(c[*cur], zz.cmp);
+      //      std::cout << "idx: " << *cur << std::endl;
         rDebug("   %d", c[*cur]->order);
+        b.append(c.at(*cur), zz.cmp);
     }
 }
 
