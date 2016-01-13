@@ -20,7 +20,7 @@ for i in range(0, sz + 1):
 for i in range(1, sz):
     print("{} {} {}".format(i/float(sz), i/float(sz), 0))
 for i in range(1, sz):
-    print("{} {} {}".format(i/float(sz), i/float(sz), 0.2))
+    print("{} {} {}".format(i/float(sz), 0.5+i/float(sz), 0.01))
 
 for i in range(1, sz):
     print("{} {} {}".format(i/float(sz), -i/float(sz), 0))
